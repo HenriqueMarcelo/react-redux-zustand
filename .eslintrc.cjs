@@ -1,14 +1,14 @@
 module.exports = {
-  env: { browser: true, es2020: true },
-  extends: [
-    'eslint:recommended',
-    'plugin:@typescript-eslint/recommended',
-    'plugin:react-hooks/recommended',
-  ],
-  parser: '@typescript-eslint/parser',
-  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
-  plugins: ['react-refresh'],
+  extends: '@rocketseat/eslint-config/react',
   rules: {
-    'react-refresh/only-export-components': 'warn',
+    'no-restricted-globals': 1,
+    'no-unused-vars': 1,
+    'prefer-template': 1,
+    'no-empty': 1,
+    'jsx-a11y/alt-text': 0,
+    'no-useless-constructor': 0,
+    'no-empty-pattern': 0,
+    'react/jsx-key': 1,
+    'prettier/prettier': 1,
   },
 }
