@@ -1,5 +1,8 @@
-import { configureStore, createSlice } from '@reduxjs/toolkit'
 import { useSelector, TypedUseSelectorHook } from 'react-redux'
+
+//  ------------- New --------------
+
+import { configureStore, createSlice } from '@reduxjs/toolkit'
 
 const todoSlice = createSlice({
   name: 'todo',
@@ -20,15 +23,31 @@ export const store = configureStore({
 
 export const { add } = todoSlice.actions
 
-export type RootState = ReturnType<typeof store.getState>
-export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector
+//  ----------- Legacy ----------------
 
 // import { legacy_createStore as createStore } from 'redux'
 
 // function counterReducer(
 //   state = { todo: ['Fazer café', 'Estudar Redux', 'Estudar Zustand'] },
+//   action: any,
 // ) {
-//   return state
+//   switch (action.type) {
+//     case 'todo/add':
+//       return {
+//         todo: [...state.todo, action.payload.newTodo],
+//       }
+//     default:
+//       return state
+//   }
 // }
 
 // export const store = createStore(counterReducer)
+
+// export function add(payload: any) {
+//   return { type: 'todo/add', payload }
+// }
+
+//  ---------------------------
+
+export type RootState = ReturnType<typeof store.getState>
+export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector
