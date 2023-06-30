@@ -39,7 +39,7 @@ export function Player() {
           </div>
 
           <aside className="absolute top-0 bottom-0 right-0 w-80 border-l divide-y-2 divide-zinc-900 border-zinc-800 bg-zinc-900 overflow-y-scroll scrollbar-thin scrollbar-track-zinc-950 scrollbar-thumb-zinc-700">
-            {modules &&
+            {modules ? (
               modules.map((module, index) => (
                 <Module
                   title={module.title}
@@ -47,7 +47,20 @@ export function Player() {
                   moduleIndex={index}
                   key={module.id}
                 />
-              ))}
+              ))
+            ) : (
+              <div className="flex w-full items-center gap-3 bg-zinc-800 p-4">
+                <div className="animate-pulse flex space-x-3 w-full">
+                  <div className="rounded-full bg-zinc-200 h-10 w-10"></div>
+                  <div className="flex-1 space-y-3 py-1">
+                    <div className="h-3 bg-zinc-200 rounded"></div>
+                    <div className="space-y-3">
+                      <div className="h-3 bg-zinc-200 rounded"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
           </aside>
         </main>
       </div>
