@@ -3,8 +3,11 @@ import { MessageCircle } from 'lucide-react'
 import { Header } from '../components/Header'
 import { Video } from '../components/Video'
 import { Module } from '../components/Module'
+import { useAppSelector } from '../store'
 
 export function Player() {
+  const modules = useAppSelector((state) => state.player.course.modules)
+
   return (
     <div className="h-screen bg-zinc-950 text-zinc-50 flex justify-center items-center">
       <div className="flex w-[1100px] flex-col gap-6">
@@ -23,21 +26,14 @@ export function Player() {
           </div>
 
           <aside className="absolute top-0 bottom-0 right-0 w-80 border-l divide-y-2 divide-zinc-900 border-zinc-800 bg-zinc-900 overflow-y-scroll scrollbar-thin scrollbar-track-zinc-950 scrollbar-thumb-zinc-700">
-            <Module
-              title="Fundamentos do React"
-              amountOfLessons={5}
-              moduleIndex={0}
-            />
-            <Module
-              title="Desvendando Redux"
-              amountOfLessons={4}
-              moduleIndex={1}
-            />
-            <Module
-              title="Fritando banana"
-              amountOfLessons={4}
-              moduleIndex={2}
-            />
+            {modules.map((module, index) => (
+              <Module
+                title={module.title}
+                amountOfLessons={module.lessons.length}
+                moduleIndex={index}
+                key={module.id}
+              />
+            ))}
           </aside>
         </main>
       </div>
