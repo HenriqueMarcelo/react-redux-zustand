@@ -1,7 +1,12 @@
-import { useCurrentLesson } from '../store/slices/player'
+import { useCurrentLesson, useStore } from '../zustand-store'
 
 export function Header() {
   const { currentLesson, currentModule } = useCurrentLesson()
+  const isLoading = useStore((store) => store.isLoading)
+
+  if (isLoading) {
+    return <h1 className="text-2xl font-bold">Carregando...</h1>
+  }
 
   return (
     <header className="flex flex-col gap-1">
